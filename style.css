@@ -61,7 +61,67 @@ h1{
     justify-content: center;
     align-items: flex-end;
     gap: 10px;
+    position: relative;
 }
+
+.lap{
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+
+.lap path{
+    stroke-width: 0px;
+    transition: all 0.3s ease;
+}
+
+.lap:hover{
+    box-shadow: 0 0 0 7px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.lap:active{
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 7px rgba(0, 0, 0, 0.6);
+}
+
+.lap:hover path{
+    stroke: white;
+    fill: white;
+}
+
+.laps-div{
+    height: calc(100% - 95px);
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.laps-div::-webkit-scrollbar{
+    width: 3px;
+}
+
+.laps-div::-webkit-scrollbar-thumb{
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+
+.lapper{
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.1);
+    margin: 5px auto;
+    padding: 0 10px;
+    backdrop-filter: blur(50px);
+}
+
+.lapper h3{
+    font-size: 25px;
+    font-weight: 200;
+}
+
 svg:hover{
     cursor: pointer;
 }

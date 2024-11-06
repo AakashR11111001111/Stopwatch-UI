@@ -8,13 +8,20 @@ var mseconds = document.querySelector(".mseconds");
 var ttPlay = document.querySelector(".tooltip-play");
 var ttStop = document.querySelector(".tooltip-stop");
 var ttreset = document.querySelector(".tooltip-reset");
+var lapCont = document.querySelector(".laps-div");
+var lapBtn = document.querySelector(".lap");
 var ms = +mseconds.innerText;
 var s = +seconds.innerText;
 var m = +minutes.innerText;
 var h = +hours.innerText;
 var intervalId = null;
+var lapArr = [];
+var once = false;
+let i = 1;
+
 
 play.addEventListener("click",function(){
+    once = true;
     if(intervalId == null){
         intervalId = setInterval(() => {
         ms++;
@@ -62,5 +69,41 @@ reset.addEventListener("click",()=>{
     seconds.innerText = `0${s}`;
     minutes.innerText = `0${m}`;
     hours.innerText = `0${h}`;
+    lapArr = [];
+    i = 1;
+    once = false;
+    lapCont.innerHTML = "";
+    lapArr.forEach(lArr => {
+        let div = document.createElement("div");
+        div.className = "lapper";
+        div.innerHTML = `
+        <div class = "index"><h3>${lArr.idx}</h3></div>
+        <div class = "timing"><h3>${lArr.hr}h : ${lArr.min}m : ${lArr.sec}s : ${lArr.msec}ms</h3></div>
+        `
+        lapCont.appendChild(div);
+    });
 })
 
+lapBtn.addEventListener("click",()=>{
+    if(once){
+        let time = {
+            idx : i,
+            min : m,
+            sec : s,
+            msec : +ms,
+            hr: +h
+        }
+        i++;
+        lapArr.push(time);
+        lapCont.innerHTML = "";
+        lapArr.forEach(lArr => {
+            let div = document.createElement("div");
+            div.className = "lapper";
+            div.innerHTML = `
+            <div class = "index"><h3>${lArr.idx}</h3></div>
+            <div class = "timing"><h3>${lArr.hr}h : ${lArr.min}m : ${lArr.sec} s : ${lArr.msec} ms</h3></div>
+            `
+            lapCont.appendChild(div);
+        });
+    }
+})

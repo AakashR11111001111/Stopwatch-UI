@@ -86,8 +86,8 @@ lapBtn.addEventListener("click",()=>{
             idx : i,
             min : m,
             sec : s,
-            msec : +ms,
-            hr: +h
+            msec : ms,
+            hr: h
         }
         i++;
         lapArr.push(time);

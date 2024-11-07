@@ -50,17 +50,13 @@ play.addEventListener("click",function(){
 })
 
 stop.addEventListener("click",()=>{
-    setTimeout(() => {
         clearInterval(intervalId);
         intervalId = null;
-    }, 0);
 })
 
 reset.addEventListener("click",()=>{
-    setTimeout(() => {
-        clearInterval(intervalId);
-        intervalId = null;
-    }, 0);
+    clearInterval(intervalId);
+    intervalId = null;
     ms = 0;
     s = 0;
     m = 0;
